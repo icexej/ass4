@@ -1,0 +1,56 @@
+class Targetologist extends Employee {
+    private double monthlyAdBudget;
+    private double conversionRate;
+
+    public Targetologist(String name, int id, int experienceYears, double baseSalary, double monthlyAdBudget, double conversionRate) {
+        super(name, id, experienceYears, baseSalary);
+        setMonthlyAdBudget(monthlyAdBudget);
+        setConversionRate(conversionRate);
+    }
+
+    public double getMonthlyAdBudget() {
+        return monthlyAdBudget;
+    }
+
+    public void setMonthlyAdBudget(double monthlyAdBudget) {
+        this.monthlyAdBudget = (monthlyAdBudget >= 0) ? monthlyAdBudget : 0.0;
+    }
+
+    public double getConversionRate() {
+        return conversionRate;
+    }
+
+    public void setConversionRate(double conversionRate) {
+        this.conversionRate = (conversionRate >= 0 && conversionRate <= 100) ? conversionRate : 1.5;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return 0;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.print("[Targetologist] ");
+        super.displayInfo();
+        System.out.println("   -> Ad Budget: $" + monthlyAdBudget + " | Conversion Rate: " + conversionRate + "%");
+    }
+
+    public void setupAdCampaign() {
+        System.out.println("-> Targetologist " + getName() + " launched target ads with budget $" + monthlyAdBudget);
+    }
+
+    public void optimizeCPA() {
+        System.out.println("-> Targetologist " + getName() + " is optimizing Cost-Per-Acquisition.");
+    }
+
+    @Override
+    public void performDailyTasks() {
+
+    }
+
+    @Override
+    public void attendMeeting(String topic) {
+
+    }
+}
