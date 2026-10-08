@@ -1,5 +1,5 @@
 
-class SocialMediaManager extends Employee {
+class SocialMediaManager extends Employee implements Workable, Reportable {
     private String platform;
     private int followersCount;
 
@@ -31,10 +31,18 @@ class SocialMediaManager extends Employee {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.print("[SMM Manager] ");
-        super.displayInfo();
-        System.out.println("   -> Platform: " + platform + " | Followers: " + followersCount);
+    public String getRoleDescription() {
+        return "Manages social media presence and community engagement on " + platform;
+    }
+
+    @Override
+    public void performDailyTasks() {
+        System.out.println("--> SMM Manager " + getName() + " is publishing posts on " + platform);
+    }
+
+    @Override
+    public void attendMeeting(String topic) {
+        System.out.println("--> SMM Manager " + getName() + " attending meeting on: " + topic);
     }
 
     public void publishPost(String title) {
@@ -46,13 +54,14 @@ class SocialMediaManager extends Employee {
     }
 
     @Override
-    public void performDailyTasks() {
-        System.out.println("--> SMM Manager " + getName() + " is publishing posts on " + platform);
+    public void displayInfo() {
+        System.out.print("[SMM Manager] ");
+        super.displayInfo();
+        System.out.println("   -> Platform: " + platform + " | Followers: " + followersCount);
     }
 
     @Override
-    public void attendMeeting(String topic) {
-        System.out.println("--> SMM Manager " + getName() + " attending meeting on: " + topic);
-
+    public void generateReport() {
+        System.out.println("-> SMM Manager " + getName() + " generated monthly analytics report.");
     }
 }
