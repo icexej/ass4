@@ -1,4 +1,4 @@
-class Targetologist extends Employee {
+class Targetologist extends Employee implements Workable, Reportable {
     private double monthlyAdBudget;
     private double conversionRate;
 
@@ -26,7 +26,12 @@ class Targetologist extends Employee {
 
     @Override
     public double calculateSalary() {
-        return 0;
+        return getBaseSalary()+(monthlyAdBudget*0.02);
+    }
+
+    @Override
+    public String getRoleDescription() {
+        return "Manages paid advertising campaigns and optimizes ROI/CPA";
     }
 
     @Override
@@ -46,11 +51,16 @@ class Targetologist extends Employee {
 
     @Override
     public void performDailyTasks() {
-
+        System.out.println("-> Targetologist " + getName() + " is monitoring active ad campaigns.");
     }
 
     @Override
     public void attendMeeting(String topic) {
+        System.out.println("-> Targetologist " + getName() + " attending analytics sync on: " + topic);
+    }
 
+    @Override
+    public void generateReport() {
+        System.out.println("-> Targetologist " + getName() + " generated advertising ROI report.");
     }
 }
