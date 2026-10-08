@@ -1,4 +1,4 @@
-class ContentCreator extends Employee {
+class ContentCreator extends Employee implements Workable, Reportable{
     private String contentType;
     private int weeklyVideos;
 
@@ -26,7 +26,12 @@ class ContentCreator extends Employee {
 
     @Override
     public double calculateSalary() {
-        return 0;
+        return getBaseSalary() + (weeklyVideos*30);
+    }
+
+    @Override
+    public String getRoleDescription() {
+        return "Produces and edits video content (" + contentType + ") for social platforms";
     }
 
     @Override
@@ -46,12 +51,18 @@ class ContentCreator extends Employee {
 
     @Override
     public void performDailyTasks() {
-
+        System.out.println("-> Creator " +getName()+ " is producting " + contentType);
     }
 
     @Override
     public void attendMeeting(String topic) {
+        System.out.println("-> Creator " + getName()+ " attending creative sync on " + topic);
 
+    }
+
+    @Override
+    public void generateReport() {
+        System.out.println("-> Content Creator " + getName() + " generated media performance report.");
     }
 }
 
