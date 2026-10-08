@@ -1,4 +1,4 @@
-class abstract class Employee implements Workable {
+abstract class Employee implements Workable, Reportable {
     private String name;
     private int id;
     private int experienceYears;
@@ -59,10 +59,12 @@ class abstract class Employee implements Workable {
     }
 
     public abstract double calculateSalary();
+    public abstract String getRoleDescription();
 
     public void displayInfo() {
         System.out.println("ID: " + id + " | Name: " + name +
                 " | Experience: " + experienceYears + " yrs" +
                 " | Base Salary: $" + baseSalary);
+        System.out.println(" -> Role Info: " + getRoleDescription()) ;
     }
 }
